@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "partials/icons.html" import icon %}
+{% block title %}{{ page.title }} | {{ SITENAME }}{% endblock %}
+{% block description %}{{ page.description or SITE_DESCRIPTION }}{% endblock %}
+{% block body_class %}page page-{{ page.slug }}{% endblock %}
+
+{% block content %}
+<header class="page-hero">
+  <div class="wrap">
+    {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.intro %}<p class="lede">{{ page.intro }}</p>{% endif %}
+  </div>
+</header>
+
+{% block page_body %}
+<div class="wrap prose-wrap">
+  <div class="prose">
+    {{ page.content }}
+  </div>
+</div>
+{% endblock %}
+{% endblock %}

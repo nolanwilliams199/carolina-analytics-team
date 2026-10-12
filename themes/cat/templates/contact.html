@@ -1,0 +1,67 @@
+{% extends "page.html" %}
+{% from "partials/icons.html" import icon %}
+{% block page_body %}
+<section class="wrap contact-layout">
+  <div class="contact-side">
+    <div class="prose">
+      {{ page.content }}
+    </div>
+    <ul class="contact-details">
+      <li>{{ icon("mail") }} <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a></li>
+      {% if CONTACT_PHONE %}<li>{{ icon("phone") }} <a href="tel:{{ CONTACT_PHONE|replace(' ', '')|replace('(', '')|replace(')', '')|replace('-', '') }}">{{ CONTACT_PHONE }}</a></li>{% endif %}
+      <li>{{ icon("pin") }} {{ SERVICE_AREA }}</li>
+      {% if SCHEDULING_URL %}<li>{{ icon("calendar") }} <a href="{{ SCHEDULING_URL }}" rel="noopener">Pick a time for a free call</a></li>{% endif %}
+    </ul>
+  </div>
+
+  <form class="card contact-form"
+        {% if FORMSPREE_ID %}action="https://formspree.io/f/{{ FORMSPREE_ID }}" method="POST"
+        {% else %}action="mailto:{{ CONTACT_EMAIL }}" method="POST" enctype="text/plain"{% endif %}>
+    <h2>Tell us what's going on</h2>
+    <div class="field-row">
+      <label>Your name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+    </div>
+    <label><span>Business name <span class="optional">(optional)</span></span>
+      <input type="text" name="business" autocomplete="organization">
+    </label>
+
+    <fieldset>
+      <legend>What are you interested in?</legend>
+      <div class="chips">
+        {% for s in SERVICES %}
+        <label class="chip"><input type="checkbox" name="interest" value="{{ s.name }}"> <span>{{ s.name }}</span></label>
+        {% endfor %}
+        <label class="chip"><input type="checkbox" name="interest" value="Not sure yet"> <span>Not sure yet</span></label>
+      </div>
+    </fieldset>
+
+    <label>What's the problem you'd like solved?
+      <textarea name="message" rows="6" required placeholder="e.g. Every Friday someone spends 3 hours pulling sales from Square into Excel to build a report for the owner…"></textarea>
+    </label>
+
+    <label><span>Rough budget <span class="optional">(optional, helps us suggest the right scope)</span></span>
+      <select name="budget">
+        <option value="">Prefer not to say</option>
+        <option>Under $1,000</option>
+        <option>$1,000 – $3,000</option>
+        <option>$3,000 – $7,500</option>
+        <option>$7,500+</option>
+        <option>Ongoing monthly help</option>
+      </select>
+    </label>
+
+    {% if FORMSPREE_ID %}
+    <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off">
+    <input type="hidden" name="_subject" value="New inquiry from {{ SITENAME }} website">
+    {% endif %}
+
+    <button class="btn" type="submit">Send message</button>
+    <p class="form-note muted">We'll reply within one business day. Your info is only used to respond to you.</p>
+  </form>
+</section>
+{% endblock %}

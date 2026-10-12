@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% from "partials/icons.html" import icon %}
+{% block title %}{{ SITENAME }} | Automation, Analytics &amp; Data Integration{% endblock %}
+{% block body_class %}home{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Small-business data help · The Carolinas &amp; remote</p>
+      <h1>Your data should do the work, <em>not you.</em></h1>
+      <p class="lede">
+        We help small businesses automate tedious tasks, see their numbers clearly,
+        and pull scattered spreadsheets and systems into one place you can trust.
+        Plain English, honest pricing, and you own everything we build.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="{{ SITEURL }}/contact/">Book a free 30-minute call</a>
+        <a class="btn btn-ghost" href="{{ SITEURL }}/pricing/">See ballpark pricing</a>
+      </div>
+    </div>
+
+    <figure class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+        <line class="art-base" x1="8" y1="250" x2="312" y2="250"/>
+        <rect class="art-bar b1" x="20"  y="200" width="44" height="50" rx="5"/>
+        <rect class="art-bar b2" x="80"  y="165" width="44" height="85" rx="5"/>
+        <rect class="art-bar b3" x="140" y="130" width="44" height="120" rx="5"/>
+        <rect class="art-bar b4" x="200" y="100" width="44" height="150" rx="5"/>
+        <polyline class="art-trend" points="42,186 102,151 162,116 222,24"/>
+        <circle class="art-dot" cx="42" cy="186" r="4"/>
+        <circle class="art-dot" cx="102" cy="151" r="4"/>
+        <circle class="art-dot" cx="162" cy="116" r="4"/>
+        <!-- the cat, sitting on the best quarter -->
+        <path class="art-tail" d="M241 93 Q262 98 258 128 Q255 152 272 160"/>
+        <path class="art-cat" d="M200 101 Q195 74 210 47 Q222 41 234 47 Q249 74 244 101 Z"/>
+        <path class="art-paw" d="M216 101 L216 84 M228 101 L228 84"/>
+        <g transform="translate(198 2) scale(.75)">
+          <path class="art-cat" d="M10 6 L25 19 Q32 16.5 39 19 L54 6 Q58 24 55 36 Q51 54 32 57 Q13 54 9 36 Q6 24 10 6 Z"/>
+          <path class="cat-ear" d="M14 13 L22 20.5 L15.5 25 Z M50 13 L42 20.5 L48.5 25 Z"/>
+          <path class="cat-eye" d="M17.5 35 Q23 28.5 28.5 35 Q23 41.5 17.5 35 Z M35.5 35 Q41 28.5 46.5 35 Q41 41.5 35.5 35 Z"/>
+          <ellipse class="cat-pupil" cx="23" cy="35" rx="1.4" ry="4"/>
+          <ellipse class="cat-pupil" cx="41" cy="35" rx="1.4" ry="4"/>
+          <path class="cat-nose" d="M29.8 43 L34.2 43 L32 45.8 Z"/>
+          <path class="cat-whisker" d="M27 46.5 L11 44.5 M27 48.5 L12 50.5 M37 46.5 L53 44.5 M37 48.5 L52 50.5"/>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What we do</p>
+      <h2>Three ways we make your data easier</h2>
+    </div>
+    <div class="card-grid">
+      {% for s in SERVICES %}
+      <article class="card service-card">
+        <div class="service-icon">{{ icon(s.icon) }}</div>
+        <h3>{{ s.name }}</h3>
+        <p class="card-headline">{{ s.headline }}</p>
+        <p>{{ s.blurb }}</p>
+        <a class="text-link" href="{{ SITEURL }}/services/#{{ s.slug }}">Examples &amp; details {{ icon("arrow") }}</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Sound familiar?</p>
+      <h2>Signs it might be time to call us</h2>
+    </div>
+    <ul class="signs">
+      <li>Someone spends hours each week copying numbers from one system into another.</li>
+      <li>Your "real" numbers live in a spreadsheet only one person understands.</li>
+      <li>Two reports give you two different answers to the same question.</li>
+      <li>You're making big decisions on gut feel because pulling the data takes too long.</li>
+      <li>You've outgrown Excel but a full-time data hire isn't in the budget.</li>
+      <li>You pay for software that has the data you need, but can't get it out.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>No surprises, start to finish</h2>
+    </div>
+    <ol class="steps">
+      {% for title, text in HOW_WE_WORK %}
+      <li>
+        <span class="step-num">{{ loop.index }}</span>
+        <h3>{{ title }}</h3>
+        <p>{{ text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section cta-band">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Not sure what you need? That's normal.</h2>
+      <p>Tell us what's frustrating and we'll tell you honestly whether we can help, roughly what it would cost, and whether it's worth it.</p>
+    </div>
+    <a class="btn btn-light" href="{{ SITEURL }}/contact/">Start a conversation</a>
+  </div>
+</section>
+{% endblock %}

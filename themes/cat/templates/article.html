@@ -1,0 +1,15 @@
+{# Only used if you add a blog later (content/blog/*.md). #}
+{% extends "base.html" %}
+{% from "partials/icons.html" import icon %}
+{% block title %}{{ article.title }} | {{ SITENAME }}{% endblock %}
+{% block content %}
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">{{ article.locale_date }}</p>
+    <h1>{{ article.title }}</h1>
+  </div>
+</header>
+<div class="wrap prose-wrap">
+  <div class="prose">{{ article.content }}</div>
+</div>
+{% endblock %}

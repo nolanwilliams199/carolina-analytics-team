@@ -1,0 +1,60 @@
+{% extends "page.html" %}
+{% from "partials/icons.html" import icon %}
+{% block page_body %}
+<section class="wrap">
+  <div class="rate-strip">
+    <div class="rate-item">
+      <span class="rate-label">Discovery call</span>
+      <span class="rate-value">{{ DISCOVERY_CALL }}</span>
+    </div>
+    <div class="rate-item">
+      <span class="rate-label">Hourly rate</span>
+      <span class="rate-value">${{ HOURLY_RATE }}<small>/hr</small></span>
+    </div>
+    <div class="rate-item">
+      <span class="rate-label">Project quotes</span>
+      <span class="rate-value">Fixed or capped</span>
+    </div>
+  </div>
+
+  {% macro price_card(p) %}
+    <article class="card price-card{% if p.featured %} featured{% endif %}">
+      {% if p.featured %}<span class="badge">Most common</span>{% endif %}
+      <p class="price-service">{{ p.service }}</p>
+      <h3>{{ p.name }}</h3>
+      <p class="price-range">{{ p.range }} <span>{{ p.unit }}</span></p>
+      <p class="price-timeline">{{ icon("calendar") }} {{ p.timeline }}</p>
+      <p>{{ p.description }}</p>
+      <ul class="checklist">
+        {% for item in p.includes %}<li>{{ icon("check") }} {{ item }}</li>{% endfor %}
+      </ul>
+    </article>
+  {% endmacro %}
+
+  <div class="price-grid">
+    {% for p in PRICING_PACKAGES if p.group != "extra" %}{{ price_card(p) }}{% endfor %}
+  </div>
+
+  <div class="price-grid price-grid-extra">
+    {% for p in PRICING_PACKAGES if p.group == "extra" %}{{ price_card(p) }}{% endfor %}
+  </div>
+
+  <div class="section-head section-head-tight">
+    <h2>What moves the price up or down</h2>
+  </div>
+  <div class="factor-grid">
+    {% for title, text in PRICING_FACTORS %}
+    <div class="factor">
+      <h3>{{ title }}</h3>
+      <p>{{ text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="wrap prose-wrap">
+  <div class="prose">
+    {{ page.content }}
+  </div>
+</div>
+{% endblock %}

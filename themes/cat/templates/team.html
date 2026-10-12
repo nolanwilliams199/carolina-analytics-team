@@ -1,0 +1,40 @@
+{% extends "page.html" %}
+{% from "partials/icons.html" import icon %}
+{% block page_body %}
+<section class="wrap team-list">
+  {% for m in TEAM %}
+  <article class="card member">
+    <div class="member-photo">
+      <img src="{{ SITEURL }}/{{ m.photo }}" alt="Photo of {{ m.name }}" width="240" height="240" loading="lazy">
+    </div>
+    <div class="member-body">
+      <h2>{{ m.name }}</h2>
+      <p class="member-role">{{ m.role }}</p>
+      {% if m.credentials %}
+      <ul class="credentials">
+        {% for c in m.credentials %}<li>{{ c }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      <div class="member-bio">{{ m.bio|md }}</div>
+      {% if m.skills %}
+      <ul class="tags" aria-label="Tools and skills">
+        {% for s in m.skills %}<li>{{ s }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% if m.linkedin or m.email %}
+      <p class="member-links">
+        {% if m.linkedin %}<a href="{{ m.linkedin }}" rel="noopener">LinkedIn</a>{% endif %}
+        {% if m.email %}<a href="mailto:{{ m.email }}">{{ m.email }}</a>{% endif %}
+      </p>
+      {% endif %}
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<div class="wrap prose-wrap">
+  <div class="prose">
+    {{ page.content }}
+  </div>
+</div>
+{% endblock %}
