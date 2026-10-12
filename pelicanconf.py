@@ -199,7 +199,7 @@ TEAM = [
     {
         "name": "Your Name",
         "role": "Founder & Lead Data Engineer",
-        "photo": "images/team/placeholder.svg",
+        "photo": "images/team/Nolan Headshot.jfif",#placeholder.svg",
         "credentials": [
             "M.S. in Data Science",
             "4 years in Data Engineering, Analytics Engineering & BI Development",
