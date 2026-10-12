@@ -197,7 +197,7 @@ PRICING_FACTORS = [
 # ---------------------------------------------------------------------------
 TEAM = [
     {
-        "name": "Your Name",
+        "name": "Nolan Williams",
         "role": "Founder & Lead Data Engineer",
         "photo": "images/team/Nolan Headshot.jfif",#placeholder.svg",
         "credentials": [
@@ -220,7 +220,7 @@ TEAM = [
             "like we're busier but making less?\"* into numbers you can act on, "
             "and explaining them without the jargon."
         ),
-        "skills": ["Python", "SQL", "PostgreSQL", "dbt", "Power BI", "Excel & Google Sheets", "APIs & automation", "Streamlit"],
+        "skills": ["Python", "SQL", "Advanced Data Analysis", "Intuitive Dashboards", "Excel & Google Sheets", "APIs & Automation"],
         "linkedin": "",
         "email": "",
     },
