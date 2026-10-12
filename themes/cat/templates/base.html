@@ -4,6 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    /* Apply the saved (or system) theme before first paint so there's no flash. */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") {
+        t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
   <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
   <meta name="description" content="{% block description %}{{ SITE_DESCRIPTION }}{% endblock %}">
   <meta property="og:title" content="{{ self.title() }}">
@@ -42,6 +54,10 @@
           {% endif %}
         </ul>
         <a class="btn btn-small" href="{{ SITEURL }}/contact/">Free call</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Dark mode" aria-pressed="false" hidden>
+          <svg class="icon i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+          <svg class="icon i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+        </button>
       </nav>
     </div>
   </header>
@@ -68,5 +84,22 @@
       <p class="footer-copy muted">&copy; {{ CURRENT_YEAR|default("2026") }} {{ SITENAME }}. Built with Python &amp; Pelican.</p>
     </div>
   </footer>
+  <script>
+    /* Header button: flip light/dark and remember the choice on this device. */
+    (function () {
+      var btn = document.getElementById("theme-toggle");
+      if (!btn) return;
+      var root = document.documentElement;
+      function sync() { btn.setAttribute("aria-pressed", root.dataset.theme === "dark" ? "true" : "false"); }
+      btn.hidden = false;
+      sync();
+      btn.addEventListener("click", function () {
+        var next = root.dataset.theme === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        try { localStorage.setItem("theme", next); } catch (e) {}
+        sync();
+      });
+    })();
+  </script>
 </body>
 </html>

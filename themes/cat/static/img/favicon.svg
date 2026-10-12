@@ -1,6 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <path fill="#1d2433" d="M10 6 L25 19 Q32 16.5 39 19 L54 6 Q58 24 55 36 Q51 54 32 57 Q13 54 9 36 Q6 24 10 6 Z"/>
-  <path fill="#e5a03a" d="M16.5 35 Q23 27 29.5 35 Q23 43 16.5 35 Z M34.5 35 Q41 27 47.5 35 Q41 43 34.5 35 Z"/>
+  <style>
+    .h { fill: #1d2433; }
+    .e { fill: #e5a03a; }
+    @media (prefers-color-scheme: dark) {
+      .h { fill: #cfd6e6; }
+      .e { fill: #b86a00; }
+    }
+  </style>
+  <path class="h" d="M10 6 L25 19 Q32 16.5 39 19 L54 6 Q58 24 55 36 Q51 54 32 57 Q13 54 9 36 Q6 24 10 6 Z"/>
+  <path class="e" d="M16.5 35 Q23 27 29.5 35 Q23 43 16.5 35 Z M34.5 35 Q41 27 47.5 35 Q41 43 34.5 35 Z"/>
   <ellipse fill="#1d2433" cx="23" cy="35" rx="1.8" ry="4.6"/>
   <ellipse fill="#1d2433" cx="41" cy="35" rx="1.8" ry="4.6"/>
 </svg>
