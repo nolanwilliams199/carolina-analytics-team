@@ -31,7 +31,7 @@ SITEURL = ""  # leave blank for local dev; set the real URL in publishconf.py
 SERVICE_AREA = "Serving the Carolinas in person and clients anywhere remotely"
 
 # TODO: replace with your real contact details
-CONTACT_EMAIL = "hello@example.com"
+CONTACT_EMAIL = "bigcat@carolinaanalyticsteam.com"
 CONTACT_PHONE = ""  # e.g. "(803) 555-0123" — leave blank to hide
 LINKEDIN_URL = ""   # e.g. "https://www.linkedin.com/in/your-name" — blank hides it
 GITHUB_URL = ""     # blank hides it
