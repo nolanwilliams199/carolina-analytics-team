@@ -35,7 +35,7 @@ CONTACT_EMAIL = "bigcat@carolinaanalyticsteam.com"
 CONTACT_PHONE = ""  # e.g. "(803) 555-0123" — leave blank to hide
 LINKEDIN_URL = ""   # e.g. "https://www.linkedin.com/in/your-name" — blank hides it
 GITHUB_URL = ""     # blank hides it
-SCHEDULING_URL = ""  # e.g. a Calendly / Cal.com link for booking the free call
+SCHEDULING_URL = "https://calendar.app.google/jKHmUT9Gaeufr1Qn8"  # e.g. a Calendly / Cal.com link for booking the free call
 
 # Contact form: create a free form at https://formspree.io, then paste the
 # form ID (the part after /f/ in the endpoint, e.g. "xyzabcde").
